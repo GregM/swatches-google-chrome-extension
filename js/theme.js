@@ -150,7 +150,7 @@ function getCssSelector (n) {
     var nodeClassName = '';
     var nodeId = '';
     if (o.className != undefined && o.className != '') {
-      nodeClassName = '.' + o.className.trim().replace(/ /g, '.');
+      nodeClassName = '.' + o.className.trim().replace(/\s{1,}/g, '.');
     } else if (o.id != undefined && o.id != '') {
       nodeId = '#' + o.id;
     }

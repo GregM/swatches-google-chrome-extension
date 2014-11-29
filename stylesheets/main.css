@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -51,7 +51,7 @@ body {
 	background: #c9c9c9;
 	border: 1px solid #c9c9c9;
 	font-family: monospace;
-	width: 450px;
+	width: 500px;
 }
 
 .colors, .menu {
@@ -59,7 +59,7 @@ body {
 }
 
 .colors {
-	width: 200px;
+	width: 250px;
 }
 
 .clearfix {
@@ -70,19 +70,20 @@ body {
 .theme-color {
 	cursor: curser;
 	font-family: monospace;
-	padding: 20px 50px;
+	padding: 20px;
 	text-align: center;
-	width: 100px;
+	width: 210px;
 }
 
 .theme-color .count,
-.theme-color .edit-color {
+.theme-color .edit-color-wrapper {
 	display: none;
 }
 
 .theme-color:hover .count,
-.theme-color:hover .edit-color {
+.theme-color:hover .edit-color-wrapper {
 	display: block;
+	padding-top: 5px;
 }
 
 .menu {
@@ -114,6 +115,26 @@ body {
 
 .variable-intro {
 	margin-top: 20px;
+}
+
+.edit-color-wrapper .edit-color-input,
+.edit-color-wrapper .edit-color-text,
+.edit-color-wrapper .edit-color-button {
+	float: left;
+}
+
+.edit-color-wrapper .edit-color-input {
+	width: 70px;
+}
+
+.edit-color-wrapper .edit-color-text {
+	padding-top: 2px;
+	width: 90px;
+}
+
+.edit-color-wrapper .edit-color-button {
+	margin-left: 10px;
+	width: 30px;
 }
 
 .gregory-mazurek {
