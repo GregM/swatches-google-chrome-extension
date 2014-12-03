@@ -114,6 +114,9 @@
    */
   function displayColors (uniqueColorObject) {
     var wrapper = document.getElementsByClassName('color-list-wrapper')[0];
+
+    $('.color-list-wrapper').children().remove()
+
     _.map(uniqueColorObject[0].colorCount, function (o) {
 
         var numElementsDiv = document.createElement('DIV');
@@ -292,7 +295,8 @@
    * @private
    */
   function isValidHexColor (color) {
-    var regex = /(^#[0-9A-Fa-f]{6}$)|(^#[0-9A-Fa-f]{3}$)/
+    // A valid hex might have !important on it like #fff!important
+    var regex = /(^#[0-9A-Fa-f]{6}(\n)*?(!important)?$)|(^#[0-9A-Fa-f]{3}(\n)*?(!important)?$)/
     return regex.test(color);
   };
 
@@ -310,21 +314,21 @@
       previousColorValue : previousColorValue,
       colors : uniqueColorObject[0].colors
     };
-      chrome.tabs.executeScript(null,
-        {
-          code: "var scriptOptions =" + JSON.stringify(params)
-        },
-      function() {
-        chrome.tabs.executeScript(null, {
-          file: 'js/replace-colors.js'
-        },
-        function(result, isException) {
-          if (isException) {
-            console.log("sigh, there were errors... :(");
-          } else if (result) {
-            console.log(result);
-          }
-        });
+    chrome.tabs.executeScript(null,
+      {
+        code: "var scriptOptions =" + JSON.stringify(params)
+      },
+    function() {
+      chrome.tabs.executeScript(null, {
+        file: 'js/replace-colors.js'
+      },
+      function(result, isException) {
+        if (isException) {
+          console.log("sigh, there were errors... :(");
+        } else if (result) {
+          retrieveColors();
+        }
+      });
     });
   };
 

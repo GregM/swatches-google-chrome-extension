@@ -135,6 +135,29 @@ function generateColorTheme () {
   });
 }
 
+
+/**
+ * Get all class names and ids from this dom object
+ *
+ * @param {Object} dom object
+ *
+ * @private
+ */
+function getDomIds (o) {
+  var nodeClassName =''
+  var nodeId = '';
+  if (o.className != undefined && o.className != '' && validClassOrId(o.className)) {
+    nodeClassName = '.' + o.className.trim().replace(/\s{1,}/g, '.');
+  } else if (o.id != undefined && o.id != '' && validClassOrId(o.id)) {
+    nodeId = '#' + o.id;
+  }
+  if (nodeClassName === undefined) {
+    console.log(nodeClassName);
+  }
+  return nodeClassName + nodeId;
+}
+
+
 /**
  * Return CSS selector and all its parents
  *
@@ -146,19 +169,34 @@ function getCssSelector (n) {
   var selector = '';
   var x = $(n).parents();
   _.map(x, function(o) {
-    selector = selector.concat(' ');
-    var nodeClassName = '';
+    // var classesAndId = getDomIds(o).length > 0 ? getDomIds(o) : '';
+    // var node = o.localName + getDomIds(o); + ' ';
+      var nodeClassName =''
     var nodeId = '';
-    if (o.className != undefined && o.className != '') {
+    if (o.className != undefined && o.className != '' && validClassOrId(o.className)) {
       nodeClassName = '.' + o.className.trim().replace(/\s{1,}/g, '.');
-    } else if (o.id != undefined && o.id != '') {
+    } else if (o.id != undefined && o.id != '' && validClassOrId(o.id)) {
       nodeId = '#' + o.id;
     }
     var node = o.localName + nodeClassName + nodeId + ' ';
     selector = node.concat(selector);
   });
+
+  selector = selector.concat($(n).prop("tagName"));
   return selector;
 };
+
+
+/**
+ * Makes sure the class name or id is valid
+ *
+ * @param {String} class or id
+ *
+ * @private
+ */
+function validClassOrId(c) {
+  return c.match(/^[0-9A-Za-z]/);
+}
 
 
 /**
@@ -182,7 +220,7 @@ function colorExists (n, nTextLength) {
  * @private
  */
 function isGradient (n) {
-  return n.split('rgb').length > 2 && n != 'initial';
+  return n.split('rgb').length > 2 && n != 'initial' && n != 'transparent';
 };
 
 
