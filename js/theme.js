@@ -147,6 +147,7 @@ function getDomIds (o) {
   var nodeClassName =''
   var nodeId = '';
   if (o.className != undefined && o.className != '' && validClassOrId(o.className)) {
+    console.log(o.className);
     nodeClassName = '.' + o.className.trim().replace(/\s{1,}/g, '.');
   } else if (o.id != undefined && o.id != '' && validClassOrId(o.id)) {
     nodeId = '#' + o.id;
@@ -195,7 +196,7 @@ function getCssSelector (n) {
  * @private
  */
 function validClassOrId(c) {
-  return c.match(/^[0-9A-Za-z]/);
+  return c != undefined && c != '' && (/^([a-z_]|-[a-z_-])[a-z\d_-]*$/i).test(c);
 }
 
 
