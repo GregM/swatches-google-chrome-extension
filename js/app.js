@@ -11,21 +11,45 @@
    * @private
    */
   function retrieveColors () {
+    showLoader();
     chrome.tabs.executeScript(null, {
       file: 'js/theme.js'
     },
     function(result, isException) {
       if (isException) {
         console.log("sigh, there were errors... :(");
+        hideLoader();
       } else if (result) {
         console.log(result);
         displayColors(result);
         displayMenuData(result);
         addEventBindersForColorChanges(result);
+        hideLoader();
       }
     });
   };
 
+
+  /**
+   * Show loading prompt
+   *
+   * @private
+   */
+  function showLoader () {
+    console.log("showLoader");
+    $('.loading').show();
+  };
+
+
+  /**
+   * Hide loading prompt
+   *
+   * @private
+   */
+  function hideLoader () {
+    console.log("hideLoader");
+    $('.loading').hide();
+  };
 
   /**
   * Prints the menu data to the screen
@@ -314,6 +338,7 @@
       previousColorValue : previousColorValue,
       colors : uniqueColorObject[0].colors
     };
+    showLoader();
     chrome.tabs.executeScript(null,
       {
         code: "var scriptOptions =" + JSON.stringify(params)

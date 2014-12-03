@@ -86,6 +86,10 @@ body {
 	padding-top: 5px;
 }
 
+.theme-color:hover .edit-color-wrapper {
+	padding: 30px 0;
+}
+
 .menu {
 	padding: 0 10px;
 	position: fixed;
@@ -141,4 +145,13 @@ body {
 	bottom: 0;
 	padding: 25px;
 	position: fixed;
+}
+
+.loading {
+	background-color: white;
+	display: none;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 500px;
 }
