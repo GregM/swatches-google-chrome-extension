@@ -48,9 +48,10 @@ table {
 }
 
 body {
-	background: #c9c9c9;
+	background: #fff;
 	border: 1px solid #c9c9c9;
 	font-family: monospace;
+	min-height: 600px;
 	width: 500px;
 }
 
@@ -98,17 +99,21 @@ body {
 	width: 230px;
 }
 
+.css-precompiler-variables {
+	margin-top: 45px;
+}
+
 .sass-variables, .less-variables {
-	height: 100px;
-	margin-top: 10px;
+	height: 200px;
+	margin-top: 20px;
 	width: 200px;
 }
 
 .logo {
-	padding: 15px 60px;
+	padding: 15px 60px 30px 60px;
 	font-family: monospace;
 	font-size: 20px;
-	color: #ffffff;
+	color: #383838;
 }
 
 .inspected-elements {

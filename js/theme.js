@@ -71,7 +71,6 @@ var Y=s();typeof define=="function"&&typeof define.amd=="object"&&define.amd?(G.
 var allNodes = $('*');
 var colors = [];
 var existingColors = [];
-var colorCount = [];
 var results = {};
 
 
@@ -147,14 +146,13 @@ function getDomIds (o) {
   var nodeClassName =''
   var nodeId = '';
   if (o.className != undefined && o.className != '' && validClassOrId(o.className)) {
-    console.log(o.className);
     nodeClassName = '.' + o.className.trim().replace(/\s{1,}/g, '.');
   } else if (o.id != undefined && o.id != '' && validClassOrId(o.id)) {
     nodeId = '#' + o.id;
   }
-  if (nodeClassName === undefined) {
-    console.log(nodeClassName);
-  }
+  // if (nodeClassName === undefined) {
+  //   console.log(nodeClassName);
+  // }
   return nodeClassName + nodeId;
 }
 
@@ -170,8 +168,6 @@ function getCssSelector (n) {
   var selector = '';
   var x = $(n).parents();
   _.map(x, function(o) {
-    // var classesAndId = getDomIds(o).length > 0 ? getDomIds(o) : '';
-    // var node = o.localName + getDomIds(o); + ' ';
       var nodeClassName =''
     var nodeId = '';
     if (o.className != undefined && o.className != '' && validClassOrId(o.className)) {
@@ -183,7 +179,9 @@ function getCssSelector (n) {
     selector = node.concat(selector);
   });
 
-  selector = selector.concat($(n).prop("tagName"));
+  var selectorClassName = $(n).prop("className") != undefined && validClassOrId($(n).prop("className")) ? '.' + $(n).prop("className") : '';
+  var selectorId = $(n).prop("id") != undefined && validClassOrId($(n).prop("id")) ? '#' + $(n).prop("id") : '';
+  selector = selector.concat($(n).prop("tagName") + selectorClassName + selectorId);
   return selector;
 };
 
@@ -251,55 +249,12 @@ function borderExists (n) {
 
 
 /**
- * Iterate through all of the colors and:
- *    1. Create a list of unique colors
- *    2. Count the number of instances of colors
- *
- * @param {List[String]} all of the colors
- *
- * @private
- */
-function countColors (colors) {
-  _.map(colors, function(c) {
-    if (!_.contains(existingColors, c.color)) {
-      existingColors.push(c.color);
-      colorCount.push({'color' : c.color, 'count' : 1});
-    } else {
-      var e = _.find(colorCount, function(i) { return i.color == c.color });
-      if (e) { e.count = e.count + 1; }
-    }
-  });
-  return existingColors;
-};
-
-
-/**
- * Sort all of the colors by their count
- *
- * @param {List[String]} all of the colors
- *
- * @private
- */
-function sortColors (colorCount) {
-  colorCount.sort(function(a, b) {
-    if (a.count < b.count) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-};
-
-
-/**
  * Instantiate
  *
  * @private
  */
 $(document).ready(function() {
   generateColorTheme();
-  countColors(colors);
-  sortColors(colorCount);
 });
 
 
@@ -309,7 +264,6 @@ $(document).ready(function() {
  *  2. List of nodes with their color properties
  */
 var results = {
-  'colorCount': colorCount,
   'colors' : colors,
   'website' : location.href
 };

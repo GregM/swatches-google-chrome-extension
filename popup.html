@@ -13,10 +13,23 @@
       <div class="logo">SWATCHES</div>
       <div class="inspected-elements"></div>
       <div class="information">CSS colors, background-colors, gradients, borders were taken into consideration to generate this theme.</div>
-      <div class="variable-intro">Copy/paste Less variables:</div>
+
+      <form class="elements-filtered">
+        Elements<br><br>
+        <input type="checkbox" name="elements" value="color" class="element-filter-color" checked>Color
+        <input type="checkbox" name="elements" value="background" class="element-filter-background">Background
+        <input type="checkbox" name="elements" value="border" class="element-filter-border" checked>Borders
+        <input type="button" name="elements" value="submit" class="element-filter-submit">
+      </form>
+
+      <form class="css-precompiler-variables">
+        Copy/paste precompiled CSS variables for<br><br>
+        <input type="radio" name="group1" value="less" checked>Less
+        <input type="radio" name="group1" value="sass">Sass
+      </form>
       <textarea class="less-variables"></textarea>
-      <div class="variable-intro">Copy/paste Sass variables:</div>
-      <textarea class="sass-variables"></textarea>
+      <textarea class="sass-variables" style="display: none;"></textarea>
+
       <div class="gregory-mazurek">Made by <a href="http://www.github.com/GregM">Gregory Mazurek</a></div>
     </div>
     <div class="clearfix"></div>
