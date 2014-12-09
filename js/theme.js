@@ -107,7 +107,7 @@ function generateColorTheme () {
     }
 
     if (bgExists(nBgColor, nBgColorVisible)) {
-      colors.push({ 'css' : 'background-color', 'color' : nBgColor, 'node' : nCssSelector });
+      colors.push({ 'css' : 'background', 'color' : nBgColor, 'node' : nCssSelector });
     }
 
     if (borderExists(nBorderColorWidth)) {
@@ -150,9 +150,6 @@ function getDomIds (o) {
   } else if (o.id != undefined && o.id != '' && validClassOrId(o.id)) {
     nodeId = '#' + o.id;
   }
-  // if (nodeClassName === undefined) {
-  //   console.log(nodeClassName);
-  // }
   return nodeClassName + nodeId;
 }
 
@@ -267,4 +264,5 @@ var results = {
   'colors' : colors,
   'website' : location.href
 };
+
 results;

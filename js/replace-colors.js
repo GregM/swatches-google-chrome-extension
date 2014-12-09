@@ -1,7 +1,5 @@
 'use strict';
 
-console.log("replace the colors");
-
 _.map(scriptOptions.userFilteredElements, function(o) {
   var preexistingColor = getSixCharacterHexValue(rgbToHex(o.color));
   if (o.color == scriptOptions.previousColorValue && o.node != '' && o.node != undefined) {
