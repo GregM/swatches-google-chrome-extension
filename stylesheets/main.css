@@ -100,20 +100,32 @@ body {
 }
 
 .css-precompiler-variables {
-	margin-top: 45px;
+	padding: 10px 0 0 0;
 }
 
 .sass-variables, .less-variables {
-	height: 200px;
-	margin-top: 20px;
+	height: 100px;
 	width: 200px;
 }
 
 .logo {
-	padding: 15px 60px 30px 60px;
+	padding: 15px 60px 5px 60px;
 	font-family: monospace;
 	font-size: 20px;
 	color: #383838;
+}
+
+.elements-filtered {
+	border-bottom: 1px solid #efefef;
+}
+
+.elements-filtered, .css-precompiler-variables {
+	padding: 10px 0 10px 20px;
+	text-align: left;
+}
+
+.elements-filtered input {
+	margin: 10px 5px 0 0;
 }
 
 .inspected-elements {
@@ -127,8 +139,7 @@ body {
 }
 
 .edit-color-wrapper .edit-color-input,
-.edit-color-wrapper .edit-color-text,
-.edit-color-wrapper .edit-color-button {
+.edit-color-wrapper .edit-color-text {
 	float: left;
 }
 
@@ -139,11 +150,6 @@ body {
 .edit-color-wrapper .edit-color-text {
 	padding-top: 2px;
 	width: 90px;
-}
-
-.edit-color-wrapper .edit-color-button {
-	margin-left: 10px;
-	width: 30px;
 }
 
 .gregory-mazurek {
@@ -159,4 +165,16 @@ body {
 	position: absolute;
 	top: 0;
 	width: 500px;
+}
+
+.advanced-options-content {
+	display: none;
+}
+
+.advanced-options-cta:hover .advanced-options-content {
+	display: block;
+}
+
+.full-spectrum .sp-palette {
+max-width: 200px;
 }

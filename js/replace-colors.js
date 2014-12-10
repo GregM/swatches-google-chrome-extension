@@ -1,6 +1,6 @@
 'use strict';
 
-_.map(scriptOptions.userFilteredElements, function(o) {
+Lazy.map(scriptOptions.userFilteredElements, function(o) {
   var preexistingColor = getSixCharacterHexValue(rgbToHex(o.color));
   if (o.color == scriptOptions.previousColorValue && o.node != '' && o.node != undefined) {
     $(o.node.trim()).css(o.css, scriptOptions.newColorValue);

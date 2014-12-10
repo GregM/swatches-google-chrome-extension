@@ -3,6 +3,7 @@
   <head>
     <title>Website Color Theme</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/spectrum.css">
   </head>
   <body>
     <div class="loading">LOADING...</div>
@@ -12,30 +13,34 @@
     <div class="menu">
       <div class="logo">SWATCHES</div>
       <div class="inspected-elements"></div>
-      <div class="information">CSS colors, background-colors, gradients, borders were taken into consideration to generate this theme.</div>
 
-      <form class="elements-filtered">
-        Elements<br><br>
-        <input type="checkbox" name="elements" value="color" class="element-filter-color" checked>Color
-        <input type="checkbox" name="elements" value="background" class="element-filter-background">Background
-        <input type="checkbox" name="elements" value="border" class="element-filter-border" checked>Borders
-        <input type="button" name="elements" value="submit" class="element-filter-submit">
-      </form>
+      <div class="advanced-options-cta">
+        Advanced Options
+        <div class="advanced-options-content">
+            <form class="elements-filtered">
+              Filter CSS property:<br>
+              <input type="checkbox" name="elements" value="color" class="element-filter-color" checked>Color<br>
+              <input type="checkbox" name="elements" value="background" class="element-filter-background" checked>Background<br>
+              <input type="checkbox" name="elements" value="border" class="element-filter-border" checked>Borders<br>
+              <input type="button" name="elements" value="Filter" class="element-filter-submit">
+            </form>
 
-      <form class="css-precompiler-variables">
-        Copy/paste precompiled CSS variables for<br><br>
-        <input type="radio" name="group1" value="less" checked>Less
-        <input type="radio" name="group1" value="sass">Sass
-      </form>
-      <textarea class="less-variables"></textarea>
-      <textarea class="sass-variables" style="display: none;"></textarea>
+          <form class="css-precompiler-variables">
+            CSS variables for:<br>
+            <input type="radio" name="group1" value="less" checked>Less
+            <input type="radio" name="group1" value="sass">Sass
+          </form>
+          <textarea class="less-variables"></textarea>
+          <textarea class="sass-variables" style="display: none;"></textarea>
+        </div>
+      </div>
 
       <div class="gregory-mazurek">Made by <a href="http://www.github.com/GregM">Gregory Mazurek</a></div>
     </div>
     <div class="clearfix"></div>
 
-    <script src="js/lowdash.min.js"></script>
-    <script src="js/zepto.min.js"></script>
+    <script src="js/vendor/lowdash.min.js"></script>
+    <script src="js/vendor/zepto.min.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
